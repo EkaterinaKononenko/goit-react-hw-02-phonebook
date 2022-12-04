@@ -1,23 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Contact } from 'components/Contact';
 
 export const ContactList = ({ contacts, deleteContact }) => {
   return (
-    <>
-      <div>
-        {contacts.map(({ id, name, number }) => {
-          return (
-            <form key={id}>
-              <div>{name}</div>
-              <div>{number}</div>
-              <button type="button" onClick={() => deleteContact(id)}>
-                Delete
-              </button>
-            </form>
-          );
-        })}
-      </div>
-    </>
+    <div>
+      {contacts.map(({ id, name, number }) => {
+        return (
+          <Contact
+            key={id}
+            id={id}
+            name={name}
+            number={number}
+            onDelete={deleteContact}
+          />
+        );
+      })}
+    </div>
   );
 };
 
