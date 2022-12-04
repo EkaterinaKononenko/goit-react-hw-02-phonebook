@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Filter } from './Filter';
 import { ContactForm } from './ContactForm';
 import { ContactList } from './ContactList';
+import { Container, PhoneTitle, ContactTitle, IconWrapper } from './App.styled';
+import { AiOutlineApple } from 'react-icons/ai';
+import { AiOutlineUsergroupAdd } from 'react-icons/ai';
 
 class App extends Component {
   state = {
@@ -39,17 +42,22 @@ class App extends Component {
     );
 
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Container>
+        <IconWrapper>
+          <PhoneTitle>Phonebook</PhoneTitle>
+          <AiOutlineApple color="#D71868" fontSize="3em" />
+        </IconWrapper>
         <ContactForm onSubmit={this.addContact} />
-
-        <h2>Contacts</h2>
+        <IconWrapper>
+          <ContactTitle>Contacts</ContactTitle>
+          <AiOutlineUsergroupAdd color="#D71868" fontSize="3em" />
+        </IconWrapper>
         <Filter value={filter} onFilter={this.onFilter} />
         <ContactList
           contacts={contactAfterFilter}
           deleteContact={this.deleteContact}
         />
-      </div>
+      </Container>
     );
   }
 }

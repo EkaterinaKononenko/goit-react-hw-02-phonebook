@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Contact } from 'components/Contact';
+import { ContactListWrap } from 'components/ContactList/ContactList.styled';
 
 export const ContactList = ({ contacts, deleteContact }) => {
   return (
-    <div>
+    <ContactListWrap>
       {contacts.map(({ id, name, number }) => {
         return (
           <Contact
@@ -16,7 +17,7 @@ export const ContactList = ({ contacts, deleteContact }) => {
           />
         );
       })}
-    </div>
+    </ContactListWrap>
   );
 };
 

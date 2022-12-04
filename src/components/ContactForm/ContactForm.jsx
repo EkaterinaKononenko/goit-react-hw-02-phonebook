@@ -1,8 +1,15 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 import { customAlphabet } from 'nanoid';
 import PropTypes from 'prop-types';
+import {
+  Input,
+  FormReg,
+  LabelForm,
+  Error,
+  BtnAddContact,
+} from './ContactForm.styled';
 
 const nanoid = customAlphabet('1234567890abcdef', 10);
 
@@ -49,24 +56,24 @@ export const ContactForm = ({ onSubmit }) => {
       validationSchema={schema}
       onSubmit={handleSubmit}
     >
-      <Form autoComplete="off">
-        <label htmlFor="name">
+      <FormReg autoComplete="off">
+        <LabelForm htmlFor="name">
           Name
-          <Field type="text" name="name" />
-          <ErrorMessage name="name" component="div" />
-        </label>
-        <label htmlFor="number">
+          <Input type="text" name="name" />
+          <Error name="name" component="div" />
+        </LabelForm>
+        <LabelForm htmlFor="number">
           Number
-          <Field
+          <Input
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           />
-          <ErrorMessage name="number" component="div" />
-        </label>
-        <button type="submit">Add contact</button>
-      </Form>
+          <Error name="number" component="div" />
+        </LabelForm>
+        <BtnAddContact type="submit">Add contact</BtnAddContact>
+      </FormReg>
     </Formik>
   );
 };
